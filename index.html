@@ -364,6 +364,7 @@
    <label>Message</label>
    <textarea placeholder="Any special request"></textarea>
    <button type="submit" class="order-button">Place Order</button>
+   <p id="order-message"></p>
     </form>
     <h3>Follow Us</h3>
     <p>
@@ -387,6 +388,8 @@
     const meal= document.getElementById("meal");
     const quantity= document.getElementById("quantity");
     const total= document.getElementById("total");
+    const form= document.querySelector("form");
+    const ordermessage= doc.getElementById("order-message");
 
     function calculateTotal() {
         const price= Number(meal.value);
@@ -397,6 +400,15 @@
     }
     meal.addEventListener("change",calculateTotal);
     quantity.addEventListener("input", calculateTotal);
+    
+    form.addEventListener("submit",function(event) {
+        event.preventDefault();
+        ordermessage.textContent= "✔️ Thank you! Your order has been received.";
+        ordermessage.style.color= "#8b4513";
+        ordermessage.style.fontWeight= "bold";
+        ordermessage.style.textAlign= "center";
+        ordermessage.style.marginTop= "15px";
+    });
 </script>
 </body>
 </html>
